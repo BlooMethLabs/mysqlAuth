@@ -8,6 +8,7 @@ var corsOptions = {
 };
 
 const db = require("./app/models");
+const { user } = require("./app/models");
 const Role = db.role;
 
 db.sequelize.sync({ force: true }).then(() => {
@@ -43,6 +44,12 @@ app.use(express.urlencoded({ extended: true }));
 // simple route
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to bloo's application." });
+});
+
+// simple route
+app.post("/test", (req, res) => {
+  console.log(req.body);
+  res.json(req.body);
 });
 
 // routes
